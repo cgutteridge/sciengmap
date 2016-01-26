@@ -1,0 +1,29 @@
+#!/usr/bin/php
+<?php
+
+$src = $argv[1];
+$tgt = $argv[2];
+
+$d = array( 
+	"activites"=>tsv_parse( "$src/activities.tsv" ),
+	"times"=>tsv_parse( "$src/times.tsv" ),
+	"locations"=>tsv_parse( "$src/locations.tsv" ),
+);
+file_put_contents( $tgt, json_encode( $d ) );
+exit;
+
+
+function tsv_parse( $file ) {
+	$lines = file( $file );
+	$fields = preg_split( '/\t/', chop( array_shift( $lines ) ));
+	$data = array();
+	foreach( $lines as $line ) {
+		$row = preg_split( '/\t/', chop( $line ));
+		$record = array();
+		for( $i=0; $i<count($fields); ++$i ) {
+			$record[$fields[$i]] = @$row[$i];
+		}
+		$data []= $record;
+	}
+	return $data;
+}

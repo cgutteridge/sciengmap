@@ -1,0 +1,11 @@
+#!/bin/bash
+
+BASE_DIR=`dirname "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"`
+
+cd $BASE_DIR
+
+curl -s 'https://docs.google.com/spreadsheets/d/10z0r1G9_w4LfM_NTWNAWaA4KsMq4Q7ti0xrHtB5y8x8/pub?gid=1188625855&single=true&output=tsv' > var/locations.tsv
+curl -s 'https://docs.google.com/spreadsheets/d/10z0r1G9_w4LfM_NTWNAWaA4KsMq4Q7ti0xrHtB5y8x8/pub?gid=0&single=true&output=tsv' > var/times.tsv
+curl -s 'https://docs.google.com/spreadsheets/d/10z0r1G9_w4LfM_NTWNAWaA4KsMq4Q7ti0xrHtB5y8x8/pub?gid=14799727&single=true&output=tsv' > var/activities.tsv
+
+bin/tsv-to-json var htdocs/data.json

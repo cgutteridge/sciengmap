@@ -5,7 +5,7 @@ $src = $argv[1];
 $tgt = $argv[2];
 
 $d = array( 
-	"activites"=>tsv_parse( "$src/activities.tsv" ),
+	"activities"=>tsv_parse( "$src/activities.tsv" ),
 	"times"=>tsv_parse( "$src/times.tsv" ),
 	"locations"=>tsv_parse( "$src/locations.tsv" ),
 );
@@ -15,7 +15,7 @@ exit;
 
 function tsv_parse( $file ) {
 	$lines = file( $file );
-	$fields = preg_split( '/\t/', chop( array_shift( $lines ) ));
+	$fields = preg_split( '/\t/', strtolower(chop( array_shift( $lines ) )));
 	$data = array();
 	foreach( $lines as $line ) {
 		$row = preg_split( '/\t/', chop( $line ));

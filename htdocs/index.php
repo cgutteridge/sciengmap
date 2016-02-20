@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <title>Science and Engineering Day</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <link rel="stylesheet" href="leaflet.css" />
   <link rel="stylesheet" href="leaflet.label.css" />
   <script src="polyfill.js"></script>
@@ -275,7 +277,7 @@ $(document).ready( function() {
 
 			var labelOpts = {};
   			labelOpts.direction = 'right';
-  			labelOpts.noHide = false;
+  			labelOpts.noHide = true;
   			var label = "<strong>"+loc.title+"</strong>"; 
         		marker.bindLabel( label, labelOpts );
 

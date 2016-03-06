@@ -6,7 +6,6 @@ $tgt = $argv[2];
 
 $d = array( 
 	"activities"=>tsv_parse( "$src/activities.tsv" ),
-	"times"=>tsv_parse( "$src/times.tsv" ),
 	"locations"=>tsv_parse( "$src/locations.tsv" ),
 );
 file_put_contents( $tgt, json_encode( $d ) );
